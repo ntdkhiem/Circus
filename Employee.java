@@ -10,4 +10,10 @@ public class Employee {
         category = c;
     }
 
+    // TODO: Implement constructor method to parse a line and convert to Employee
+    // object.
+    public Employee(String line) {
+        // return "";
+    }
+
 }
