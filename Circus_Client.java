@@ -6,9 +6,16 @@ public class Circus_Client {
 
     // static EmployeeLinkedList employeeListByName= null;
     // static EmployeeLinkedList employeeListById = null;
+    // static boolean newEmployeeAdded = false; // to reset EmployeeLinkedList when
+    // a new employee added.
+
     public static void main(String[] args) {
         // Step 1: Build the data structure
-
+        // Scanner data = new Scanner(new File("database.txt"));
+        // CategoryTree cttree = new CategoryTree();
+        // while (data.hasNextLine()) {
+        // cttree.add(data.nextLine());
+        // }
         // Step 2: Do things in the menu
         int choice = menu(console);
 
