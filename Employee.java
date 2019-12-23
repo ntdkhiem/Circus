@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Employee {
     public String firstName, lastName, middleInitial, ss, title, category;
 
@@ -10,10 +12,16 @@ public class Employee {
         category = c;
     }
 
-    // TODO: Implement constructor method to parse a line and convert to Employee
-    // object.
+    // Precondition: "last first mid social-number category title"
     public Employee(String line) {
-        // return "";
+        Scanner c = new Scanner(line);
+        lastName = c.next();
+        firstName = c.next();
+        middleInitial = c.next();
+        ss = c.next();
+        title = c.next();
+        category = c.next();
+        c.close();
     }
 
 }

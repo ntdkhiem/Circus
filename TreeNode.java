@@ -3,7 +3,7 @@ class TreeNode {
     private String title;
     private Employee data;
 
-    public TreeNode(Employee d) {
+    public TreeNode(String title, Employee d) {
         left = null;
         right = null;
         data = d;
