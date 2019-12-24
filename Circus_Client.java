@@ -13,14 +13,15 @@ public class Circus_Client {
 
     public static void main(String[] args) throws FileNotFoundException {
         // Step 1: Build the data structure
-        Scanner data = new Scanner(new File("database.txt"));
-        // CategoryTree cttree = new CategoryTree();
-        // while (data.hasNextLine()) {
-        // cttree.add(data.nextLine());
-        // }
+        Scanner data = new Scanner(new File("s_database.txt"));
+        CategoryTree cttree = new CategoryTree();
+        while (data.hasNextLine()) {
+            cttree.add(data.nextLine());
+        }
+        data.close();
+        cttree.printSideways();
         // Step 2: Do things in the menu
         // int choice = menu(console);
-
     }
 
     public static int menu(Scanner console) {

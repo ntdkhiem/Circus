@@ -19,9 +19,16 @@ public class Employee {
         firstName = c.next();
         middleInitial = c.next();
         ss = c.next();
-        title = c.next();
         category = c.next();
+        // add everything else as a title
+        title = c.next();
+        while (c.hasNext()) {
+            title += c.next();
+        }
         c.close();
     }
 
+    public String toString() {
+        return "(" + lastName + " " + firstName + " " + middleInitial + "  " + ss + "  " + title + ")";
+    }
 }
