@@ -1,14 +1,14 @@
 class CategoryTreeNode {
     private CategoryTreeNode left, right;
     private String title;
-    private Employee data;
-    // private EmployeeTree employees;
+    // private Emplo/yee data;
+    private EmployeeTree employees;
 
-    public CategoryTreeNode(String t, Employee d) {
+    public CategoryTreeNode(String t) {
         left = null;
         right = null;
+        employees = new EmployeeTree();
         title = t;
-        data = d;
     }
 
     public CategoryTreeNode getLeft() {
@@ -27,8 +27,8 @@ class CategoryTreeNode {
         right = r;
     }
 
-    public Employee getData() {
-        return data;
+    public EmployeeTree getEmployees() {
+        return employees;
     }
 
     public String getTitle() {
@@ -36,6 +36,6 @@ class CategoryTreeNode {
     }
 
     public String toString() {
-        return "Title: " + title + "  Data: " + data.toString();
+        return "Title: " + title;
     }
 }

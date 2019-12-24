@@ -15,30 +15,34 @@ public class CategoryTree {
             // create an Employee object
             Employee person = new Employee(line);
             // create a TreeNode object
-            CategoryTreeNode node = new CategoryTreeNode(person.category, person);
-            root = add(root, node);
+            root = add(root, person);
             // TODO: add employee's id to idSet
         }
     }
 
     // add treenode (by compare it's title) to its final location
-    public CategoryTreeNode add(CategoryTreeNode root, CategoryTreeNode node) {
-        if (root == null) {
+    public CategoryTreeNode add(CategoryTreeNode localRoot, Employee person) {
+        // create new EmployeeTree if not exist
+        if (localRoot == null) {
+            CategoryTreeNode node = new CategoryTreeNode(person.category);
+            // add current employee as root
+            node.getEmployees().add(person);
             return node;
         }
 
         // add to the left
-        if (root.getTitle().compareTo(node.getTitle()) < 0) {
-            root.setLeft(add(root.getLeft(), node));
-            return root;
+        if (localRoot.getTitle().compareTo(person.category) < 0) {
+            localRoot.setLeft(add(localRoot.getLeft(), person));
+            return localRoot;
         }
         // add to the right
-        if (root.getTitle().compareTo(node.getTitle()) > 0) {
-            root.setRight(add(root.getRight(), node));
-            return root;
+        if (localRoot.getTitle().compareTo(person.category) > 0) {
+            localRoot.setRight(add(localRoot.getRight(), person));
+            return localRoot;
         } else {
-            // TODO: Add employee to EmployeeTree if node already existed
-            return root;
+            // Add employee to EmployeeTree if node already existed
+            localRoot.getEmployees().add(person);
+            return localRoot;
         }
     }
 
@@ -52,27 +56,8 @@ public class CategoryTree {
             for (int i = 0; i < level; i++) {
                 System.out.print("            ");
             }
-            System.out.println(root.getData());
+            System.out.println(root.getTitle());
             printSideways(root.getLeft(), level + 1);
         }
     }
 }
-
-// static HashSet idSet = new HashSet<String>();
-
-// public void printSideways() {
-// printSideways(overallRoot, 0);
-// }
-
-// // post: prints in reversed preorder the tree with given
-// // root, indenting each line to the given level
-// private void printSideways(IntTreeNode root, int level) {
-// if (root != null) {
-// printSideways(root.right, level + 1);
-// for (int i = 0; i < level; i++) {
-// System.out.print(" ");
-// }
-// System.out.println(root.data);
-// printSideways(root.left, level + 1);
-// }
-// }
