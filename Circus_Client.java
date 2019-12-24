@@ -16,7 +16,13 @@ public class Circus_Client {
         Scanner data = new Scanner(new File("s_database.txt"));
         CategoryTree cttree = new CategoryTree();
         while (data.hasNextLine()) {
-            cttree.add(data.nextLine());
+            String line = data.nextLine();
+            if (line != "") {
+                Employee person = new Employee(line);
+                if (!cttree.idIsExist(person.ss)) {
+                    cttree.add(person);
+                }
+            }
         }
         data.close();
         cttree.printSideways();

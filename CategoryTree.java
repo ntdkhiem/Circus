@@ -9,15 +9,9 @@ public class CategoryTree {
         root = null;
     }
 
-    public void add(String line) {
-        // check if line is not null
-        if (line.compareTo("") != 0) {
-            // create an Employee object
-            Employee person = new Employee(line);
-            // create a TreeNode object
-            root = add(root, person);
-            // TODO: add employee's id to idSet
-        }
+    public void add(Employee person) {
+        root = add(root, person);
+        idSet.add(person.ss);
     }
 
     // add treenode (by compare it's title) to its final location
@@ -44,6 +38,11 @@ public class CategoryTree {
             localRoot.getEmployees().add(person);
             return localRoot;
         }
+    }
+
+    // Check for existence id
+    public boolean idIsExist(String id) {
+        return idSet.contains(id);
     }
 
     public void printSideways() {

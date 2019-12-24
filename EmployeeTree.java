@@ -18,7 +18,6 @@ public class EmployeeTree {
         NameCP = cp1;
     }
 
-    // TODO: Implement add method
     public void add(Employee empl) {
         EmployeeTreeNode node = new EmployeeTreeNode(empl);
         root = add(root, node);
