@@ -6,18 +6,20 @@ import java.io.FileNotFoundException;
 public class Circus_Client {
     static Scanner console = new Scanner(System.in);
 
-    // static EmployeeLinkedList employeeListByName= null;
-    // static EmployeeLinkedList employeeListById = null;
     // static boolean newEmployeeAdded = false; // to reset EmployeeLinkedList when
     // a new employee added.
 
     public static void main(String[] args) throws FileNotFoundException {
+        // Global linkedlists
+        EmployeeDoubleLinkedList employeesSortedByName = null;
+        EmployeeDoubleLinkedList employeesSortedById = null;
+
         // Step 1: Build the data structure
         Scanner data = new Scanner(new File("s_database.txt"));
         CategoryTree cttree = new CategoryTree();
         while (data.hasNextLine()) {
             String line = data.nextLine();
-            if (line != "") {
+            if (!line.equals("")) {
                 Employee person = new Employee(line);
                 if (!cttree.idIsExist(person.ss)) {
                     cttree.add(person);
@@ -25,9 +27,39 @@ public class Circus_Client {
             }
         }
         data.close();
-        cttree.printSideways();
+        // cttree.printSideways();
         // Step 2: Do things in the menu
-        // int choice = menu(console);
+        int choice = menu(console);
+
+        // TODO: Finish implement this
+        while (choice != 9) {
+            switch (choice) {
+            case 1:
+                if (employeesSortedByName == null) {
+                    employeesSortedByName = cttree.sortByName();
+                }
+                System.out.println(employeesSortedByName.toString());
+                return;
+            case 2:
+                if (employeesSortedById == null) {
+                    employeesSortedById = cttree.sortById();
+                }
+                System.out.println(employeesSortedById.toString());
+                return;
+            case 3:
+                return;
+            case 4:
+                return;
+            case 5:
+                return;
+            case 6:
+                return;
+            case 7:
+                return;
+            case 8:
+                return;
+            }
+        }
     }
 
     public static int menu(Scanner console) {

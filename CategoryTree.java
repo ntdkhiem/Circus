@@ -25,12 +25,12 @@ public class CategoryTree {
         }
 
         // add to the left
-        if (localRoot.getTitle().compareTo(person.category) < 0) {
+        if (localRoot.getTitle().compareTo(person.category) > 0) {
             localRoot.setLeft(add(localRoot.getLeft(), person));
             return localRoot;
         }
         // add to the right
-        if (localRoot.getTitle().compareTo(person.category) > 0) {
+        if (localRoot.getTitle().compareTo(person.category) < 0) {
             localRoot.setRight(add(localRoot.getRight(), person));
             return localRoot;
         } else {
@@ -38,6 +38,27 @@ public class CategoryTree {
             localRoot.getEmployees().add(person);
             return localRoot;
         }
+    }
+
+    public EmployeeDoubleLinkedList sortByName() {
+        return sortBy("name", root, new EmployeeDoubleLinkedList());
+    }
+
+    public EmployeeDoubleLinkedList sortById() {
+        return sortBy("id", root, new EmployeeDoubleLinkedList());
+    }
+
+    // TODO: consider put this in EmployeeDoubleLinkedList for cleanness :)
+    public EmployeeDoubleLinkedList sortBy(String cmd, CategoryTreeNode localRoot, EmployeeDoubleLinkedList list) {
+        // Loop through category
+        if (localRoot == null) {
+            return list;
+        }
+
+        list.addBy(cmd, localRoot.getEmployees().getRoot());
+
+        return sortBy(cmd, localRoot.getRight(), sortBy(cmd, localRoot.getLeft(), list));
+
     }
 
     // Check for existence id

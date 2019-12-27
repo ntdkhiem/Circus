@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Employee {
+public class Employee extends NameComparator {
     public String firstName, lastName, middleInitial, ss, title, category;
 
     public Employee(String f, String l, String m, String s, String t, String c) {
@@ -14,6 +14,7 @@ public class Employee {
 
     // Precondition: "last first mid social-number category title"
     public Employee(String line) {
+        // System.out.println(line);
         Scanner c = new Scanner(line);
         lastName = c.next();
         firstName = c.next();
