@@ -94,7 +94,7 @@ Sava Dario A		     	328-947-230         Entertainer     Albanian-Internet-Invent
 Tam Jason C		     	797-979-979         Trapeze	     Flying_Crab-Rangoon 	
 Gabriella Anthony #        	137-913-826         Freak	     Infinite_Talker		
 Nguyen Antony #	     	809-735-666         Clown 	     Alien-Invader
-Che George J		     	714-936-825         Janitor	     MonkeyPoopSweeper#2
+Che George J		     	714-936-824         Janitor	     MonkeyPoopSweeper#2
 
 Cheang Wai Elmo	     573-642-984     Clown 	     Elmo-Cookie-n-Milk-etc
 LeBlanc Barndo Chewy  002-972-972      Freak	     Wookie
@@ -130,7 +130,7 @@ Pulisciano Anthony #		842-979-939		Clown			FrazzleDazzle-Clown
 Silva Jonathan J		349-788-521		Clown			Brazilian-EnuffSaid
 Savlidis Vlad V		985-632-741		Freak			Baklava Boy
 Tse Andy A			789-321-500		Freak			Cabbage Patch boy#2
-			
+
 Arazia Andrew A		559-782-843		Clown			Just_Look_at_Face
 Bryan Karl K			070-000-777		Entertainer		Debuty_Dog_Impersonator
 Chen Raymond R		793-182-972		Trapeze		Tight_Rope_Walker
@@ -176,8 +176,8 @@ Marcus Rowan A		014-630-259		Magician		NetworkNeophyte
 Cheang Anson A		826-957-111		Entertainer		GoogleMapsExpert
 D’Entremont Chris C		349-726-822		Clown		         CurlyQueueDooClown
 Delva Valery	V		829-736-991		Entertainer		Mime#1
-Madeira,Gabriel #		002-970-306		Clown			BobHairDooClown
-Nguyen Quang Q		118-729-836		Magican		InvisibleManThing
+Madeira Gabriel #		002-970-306		Clown			BobHairDooClown
+Nguyen Quang Q		118-729-836		Magician		InvisibleManThing
 Smilyanova Yulia X		972-083-661		Entertainer		Mime#2	
 Sathiyendra Ajithaan	#	301-008-700		Magician		rogramerExtrodinare
 Itthiphinyo Samanan	#	829-701-970		Freak		    PinkBoyFreakThingyThing

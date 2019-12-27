@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 
 public class Circus_Client {
     static Scanner console = new Scanner(System.in);
+    static CategoryTree cttree;
 
     // static boolean newEmployeeAdded = false; // to reset EmployeeLinkedList when
     // a new employee added.
@@ -16,7 +17,7 @@ public class Circus_Client {
 
         // Step 1: Build the data structure
         Scanner data = new Scanner(new File("s_database.txt"));
-        CategoryTree cttree = new CategoryTree();
+        cttree = new CategoryTree();
         while (data.hasNextLine()) {
             String line = data.nextLine();
             if (!line.equals("")) {
@@ -39,26 +40,41 @@ public class Circus_Client {
                     employeesSortedByName = cttree.sortByName();
                 }
                 System.out.println(employeesSortedByName.toString());
-                return;
+                break;
             case 2:
                 if (employeesSortedById == null) {
                     employeesSortedById = cttree.sortById();
                 }
                 System.out.println(employeesSortedById.toString());
-                return;
+                break;
             case 3:
-                return;
+                Employee e = newEmployee(console);
+                while (cttree.idSet.contains(e.ss)) {
+                    System.out.println("social security number should not be the same. Please try again...");
+                    e = newEmployee(console);
+                }
+                cttree.add(e);
+                // Reset all cached dataset
+                employeesSortedById = employeesSortedByName = null;
+                break;
             case 4:
-                return;
+                System.out.print("What is employee's social security number: ");
+                String ssNum = console.next();
+                // check in idSet
+                // Find the employee
+                // delete it
+                break;
             case 5:
-                return;
+                break;
             case 6:
-                return;
+                break;
             case 7:
-                return;
+                break;
             case 8:
-                return;
+                break;
             }
+            System.out.println();
+            choice = menu(console);
         }
     }
 
@@ -74,5 +90,25 @@ public class Circus_Client {
         System.out.println("(9)	  Quit");
         System.out.print("What is your selection: ");
         return console.nextInt();
+    }
+
+    public static Employee newEmployee(Scanner console) {
+        Employee e = new Employee();
+        System.out.print("What is employee's first name: ");
+        e.firstName = console.next();
+        System.out.print("What is employee's last name: ");
+        e.lastName = console.next();
+        System.out.print("What is employee's middle initial: ");
+        e.middleInitial = console.next();
+        System.out.print("What is employee's social security number: ");
+        e.ss = console.next();
+        System.out.print("What is employee's title: ");
+        e.title = console.next();
+        for (int i = 0; i < cttree.categoryList.size(); i++) {
+            System.out.println(i + ". " + cttree.categoryList.get(i));
+        }
+        System.out.print("choose your category: ");
+        e.category = cttree.categoryList.get(console.nextInt());
+        return e;
     }
 }

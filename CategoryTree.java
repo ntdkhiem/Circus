@@ -1,17 +1,21 @@
 import java.util.HashSet;
+import java.util.ArrayList;
 
 public class CategoryTree {
-    private HashSet<String> idSet;
+    public HashSet<String> idSet;
+    public ArrayList<String> categoryList;
     private CategoryTreeNode root;
 
     public CategoryTree() {
         idSet = new HashSet<String>();
+        categoryList = new ArrayList<String>();
         root = null;
     }
 
     public void add(Employee person) {
         root = add(root, person);
         idSet.add(person.ss);
+        categoryList.add(person.category);
     }
 
     // add treenode (by compare it's title) to its final location
