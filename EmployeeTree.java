@@ -42,6 +42,22 @@ public class EmployeeTree {
         }
     }
 
+    public EmployeeTreeNode findEmployee(String ss) {
+        return findEmployee(root, ss);
+    }
+
+    public EmployeeTreeNode findEmployee(EmployeeTreeNode localRoot, String ss) {
+        if (localRoot == null) {
+            return null;
+        }
+        if (localRoot.getEmployee().ss.equals(ss)) {
+            return localRoot;
+        }
+        EmployeeTreeNode r = findEmployee(localRoot.getLeft(), ss);
+
+        return r != null ? r : findEmployee(localRoot.getRight(), ss);
+    }
+
     public EmployeeTreeNode getRoot() {
         return root;
     }

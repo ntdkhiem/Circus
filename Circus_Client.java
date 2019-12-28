@@ -49,7 +49,7 @@ public class Circus_Client {
                 break;
             case 3:
                 Employee e = newEmployee(console);
-                while (cttree.idSet.contains(e.ss)) {
+                while (cttree.idIsExist(e.ss)) {
                     System.out.println("social security number should not be the same. Please try again...");
                     e = newEmployee(console);
                 }
@@ -61,8 +61,14 @@ public class Circus_Client {
                 System.out.print("What is employee's social security number: ");
                 String ssNum = console.next();
                 // check in idSet
+                while (!cttree.idIsExist(ssNum)) {
+                    System.out.println("No such id.");
+                    System.out.print("What is employee's social security number: ");
+                    ssNum = console.next();
+                }
                 // Find the employee
                 // delete it
+                cttree.deleteEmployee(ssNum);
                 break;
             case 5:
                 break;

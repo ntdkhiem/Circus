@@ -2,7 +2,7 @@ import java.util.HashSet;
 import java.util.ArrayList;
 
 public class CategoryTree {
-    public HashSet<String> idSet;
+    private HashSet<String> idSet;
     public ArrayList<String> categoryList;
     private CategoryTreeNode root;
 
@@ -58,10 +58,41 @@ public class CategoryTree {
         if (localRoot == null) {
             return list;
         }
-
+        // Add employees from current category to list
         list.addBy(cmd, localRoot.getEmployees().getRoot());
 
         return sortBy(cmd, localRoot.getRight(), sortBy(cmd, localRoot.getLeft(), list));
+
+    }
+
+    // delete an employee given social security number
+    public void deleteEmployee(String ss) {
+        deleteEmployee(root, ss);
+        // for each category:
+        // Find employee inside its EmployeeTree
+    }
+
+    public void deleteEmployee(CategoryTreeNode localRoot, String ss) {
+        if (localRoot != null) {
+            // InOrder traversal:
+            // self
+            EmployeeTreeNode employeeNode = localRoot.getEmployees().findEmployee(ss);
+            // EmployeeTreeNode employeeNode = localRoot.getEmployees().deleteEmployee(ss);
+            // If found then perform deletion
+            // if (employeeNode != null) {
+            // Employee employee = employeeNode.getEmployee();
+            // System.out
+            // .println("Found: " + employee.lastName + " " + employee.firstName + " " +
+            // employee.middleInitial
+            // + " " + employee.ss + " " + employee.category + " " + employee.title);
+            // localRoot.getEmployees().delete(employeeNode);
+        } else {
+            // TODO: Fix this confusing part
+            // left
+            deleteEmployee(localRoot.getLeft(), ss);
+            deleteEmployee(localRoot.getRight(), ss);
+        }
+    }
 
     }
 
