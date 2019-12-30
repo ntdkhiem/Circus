@@ -31,6 +31,11 @@ class CategoryTreeNode {
         return employees;
     }
 
+    public void setData(CategoryTreeNode node) {
+        this.title = node.getTitle();
+        this.employees = node.getEmployees();
+    }
+
     public String getTitle() {
         return title;
     }

@@ -27,4 +27,8 @@ class EmployeeTreeNode {
         return data;
     }
 
+    public void setEmployee(Employee d) {
+        data = d;
+    }
+
 }

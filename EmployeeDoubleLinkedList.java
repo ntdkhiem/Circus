@@ -18,12 +18,13 @@ public class EmployeeDoubleLinkedList {
             } else if (cmd.equals("id")) {
                 addById(new EmployeeDoubleLinkedListNode(node), new IdComparator()); // TODO: very bad: spawn
                                                                                      // multiple comparator
+            } else if (cmd.equals("category")) {
+                // Normal add
+                addByCategory(new EmployeeDoubleLinkedListNode(node));
             }
-
             // System.out.println(toString());
             addBy(cmd, node.getRight());
         }
-
     }
 
     // TODO: Optimize this method with addById since its duplicate
@@ -132,6 +133,22 @@ public class EmployeeDoubleLinkedList {
             }
             current = current.getNext();
         }
+    }
+
+    public void addByCategory(EmployeeDoubleLinkedListNode localNode) {
+        if (head == null) {
+            head = tail = localNode;
+            return;
+        }
+        localNode.setPrevious(tail);
+        tail.setNext(localNode);
+
+        if (head.getEmployeeTreeNode().getEmployee().ss.equals(tail.getEmployeeTreeNode().getEmployee().ss)) {
+            head.setNext(localNode);
+            localNode.setPrevious(head);
+        }
+
+        tail = localNode;
     }
 
     public String toString() {

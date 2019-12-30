@@ -14,9 +14,10 @@ public class Circus_Client {
         // Global linkedlists
         EmployeeDoubleLinkedList employeesSortedByName = null;
         EmployeeDoubleLinkedList employeesSortedById = null;
+        EmployeeDoubleLinkedList employeesSortedByCategory = null;
 
         // Step 1: Build the data structure
-        Scanner data = new Scanner(new File("s_database.txt"));
+        Scanner data = new Scanner(new File("database.txt"));
         cttree = new CategoryTree();
         while (data.hasNextLine()) {
             String line = data.nextLine();
@@ -69,14 +70,38 @@ public class Circus_Client {
                 // Find the employee
                 // delete it
                 cttree.deleteEmployee(ssNum);
+                employeesSortedByName = null;
+                employeesSortedById = null;
+                employeesSortedByCategory = null;
                 break;
             case 5:
+                String category = chooseCategory(console);
+                EmployeeDoubleLinkedList empl = cttree.getEmployeesByCategory(category);
+                System.out.println(empl.toString());
                 break;
             case 6:
+                if (employeesSortedByCategory == null) {
+                    employeesSortedByCategory = cttree.sortByCategory();
+                }
+                System.out.println(employeesSortedByCategory.toString());
                 break;
             case 7:
+                System.out.print("What is your category's name: ");
+                String categoryName = console.next();
+                while (cttree.categoryList.contains(categoryName)) {
+                    System.out.println("The category already existed");
+                    System.out.print("What is your category's name: ");
+                    categoryName = console.next();
+                }
+                cttree.addCategory(categoryName);
+                System.out.println("New category " + categoryName + " added.");
                 break;
             case 8:
+                String c = chooseCategory(console);
+                cttree.deleteCategory(c);
+                employeesSortedByName = null;
+                employeesSortedById = null;
+                employeesSortedByCategory = null;
                 break;
             }
             System.out.println();
@@ -110,11 +135,22 @@ public class Circus_Client {
         e.ss = console.next();
         System.out.print("What is employee's title: ");
         e.title = console.next();
+        e.category = chooseCategory(console);
+        return e;
+    }
+
+    // TODO: Fix duplicate category when displaying.
+    private static String chooseCategory(Scanner console) {
         for (int i = 0; i < cttree.categoryList.size(); i++) {
             System.out.println(i + ". " + cttree.categoryList.get(i));
         }
         System.out.print("choose your category: ");
-        e.category = cttree.categoryList.get(console.nextInt());
-        return e;
+        int choice = console.nextInt();
+        while (choice < 0 || choice > cttree.categoryList.size()) {
+            System.out.println("Incorrect option.");
+            System.out.print("choose your category: ");
+            choice = console.nextInt();
+        }
+        return cttree.categoryList.get(choice);
     }
 }
